@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Yueniq LLC</title>
     <script>
-      // This script handles client-side routing for a single-page app
-      // GitHub Pages will serve this 404.html for all non-existent routes
-      const path = window.location.pathname;
-      const isProduction = location.hostname !== 'localhost';
-      
-      // Redirect to home with the path as a query parameter
-      // The app will read this and navigate accordingly
-      sessionStorage.redirect = path;
-      window.location.href = '/';
+      // This script handles client-side routing for a single-page app on GitHub Pages
+      // Store the redirect path before navigating to index.html
+      (function() {
+        const path = window.location.pathname;
+        // Store the path to be restored after the page loads
+        sessionStorage.setItem('redirectPath', path);
+        // Redirect to the root index.html
+        window.location.href = '/';
+      })();
     </script>
   </head>
   <body></body>
